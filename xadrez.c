@@ -1,57 +1,53 @@
 #include <stdio.h>
 
-int main() {
-    
-    int torre = 1;
-    int bispo = 1;
-    int rainha = 1;
-    int cavalo = 1;
-    int cavalo2 = 1;
-    
-    while (torre <= 5) {
-        printf("Torre movida para direita %d casa(s)\n", torre);
-        torre++;
+void torremov (int casa){
+    if (casa > 0) {
+    printf("Direita\n");
+    torremov (casa - 1);
+    }
+}
+
+void bispomov (int casa, int casa2) {
+    for (casa; casa > 0; casa--) {
+        while (casa2 > 0){
+        printf("Direita\n");
+        casa2--;
+        }
+        printf("Cima\n");
+        };
     }
 
-    do
-    {
-        printf("Bispo movido para cima e para a direita %d casa(s)\n", bispo);
-        bispo++;
-    } while (bispo <= 5);
+void rainhamov (int casa){
+    if (casa > 0) {
+    printf("Esquerda\n");
+    rainhamov (casa - 1);
+    }
+}
 
-    for (rainha; rainha <= 8; rainha++)
-    {
-        printf("Rainha movida para a esquerda %d casa(s)\n", rainha);
-    } 
+int main() {
+
+    printf("Movimentos torre\n");
     
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+    torremov (5);
 
-        do {
-        printf("Cavalo movido para esquerda\n");
-           
-            for (cavalo = 1; cavalo <= 2; cavalo++) {
-            printf("Cavalo movido para baixo\n");
-            }
+    printf("\n");
+    printf("Movimentos bispo\n");
 
-        } while (cavalo2 < 1);
+    bispomov (5,5);
 
-        for (cavalo = 1; cavalo >= 1; cavalo--) {
+    printf("\n");
+    printf("Movimentos rainha\n");
 
-            while (cavalo2 <= 2)
-            {
-            printf("Cavalo para Baixo\n");
-            cavalo2++;
-            }
-        printf("Cavalo para Esquerda\n");
-        }  
+    rainhamov (8);
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    printf("\n");
+    printf("Movimentos cavalo\n");
 
+    for (int direita = 1; direita > 0; direita--){
+        for (int cima = 2; cima > 0; cima--){
+            printf("Cima\n");
+        }
+    printf("Direita\n");
+   } 
     return 0;
 }
